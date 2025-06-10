@@ -1,8 +1,9 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Navbar from '@/components/Navbar'
 import { useTranslation } from '@/hooks/useTranslation'
 import emailjs from '@emailjs/browser'
+import { initEmailJS } from '@/app/config/emailjs'
 
 export default function Contact() {
   const { t } = useTranslation()
@@ -18,6 +19,10 @@ export default function Contact() {
     error: false
   })
 
+  useEffect(() => {
+    initEmailJS()
+  }, [])
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
       ...formData,
@@ -31,16 +36,15 @@ export default function Contact() {
 
     try {
       await emailjs.send(
-        'service_lemywb7', // Reemplaza con tu Service ID de EmailJS
-        'template_cnykn6m', // Reemplaza con tu Template ID de EmailJS
+        'service_lemywb7',
+        'template_u5lpgdq',
         {
           from_name: formData.name,
           from_email: formData.email,
           phone: formData.phone,
           message: formData.message,
           to_name: 'Roig Investments'
-        },
-        'Ph3vDfn-CMzvL7nFlEY' // Reemplaza con tu Public Key de EmailJS
+        }
       )
 
       setStatus({ loading: false, success: true, error: false })
