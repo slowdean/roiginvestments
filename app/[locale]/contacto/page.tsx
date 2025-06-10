@@ -39,8 +39,8 @@ export default function Contact() {
         'service_lemywb7',
         'template_u5lpgdq',
         {
-          from_name: formData.name,
-          from_email: formData.email,
+          name: formData.name,
+          email: formData.email,
           phone: formData.phone,
           message: formData.message,
           to_name: 'Roig Investments'
