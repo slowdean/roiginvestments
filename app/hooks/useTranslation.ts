@@ -1,9 +1,10 @@
-import { useRouter } from 'next/router'
+'use client'
+import { useParams } from 'next/navigation'
 import { translations } from '../translations'
 
 export function useTranslation() {
-  const router = useRouter()
-  const { locale = 'es' } = router
+  const params = useParams()
+  const locale = (params?.locale as string) || 'es'
 
   const t = (key: string) => {
     const keys = key.split('.')
