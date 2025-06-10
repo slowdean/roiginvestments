@@ -2,8 +2,8 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import Navbar from './components/Navbar'
-import { useTranslation } from './hooks/useTranslation'
+import Navbar from '../../components/Navbar'
+import { useTranslation } from '../../hooks/useTranslation'
 
 export default function Home() {
   const { t } = useTranslation()

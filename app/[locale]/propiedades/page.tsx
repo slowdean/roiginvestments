@@ -1,8 +1,8 @@
 'use client'
 import React from 'react'
 import Image from 'next/image'
-import Navbar from '../components/Navbar'
-import { useTranslation } from '../hooks/useTranslation'
+import Navbar from '../../components/Navbar'
+import { useTranslation } from '../../hooks/useTranslation'
 
 interface Property {
   id: number;
