@@ -32,7 +32,7 @@ export default function Contact() {
     try {
       await emailjs.send(
         'service_lemywb7', // Reemplaza con tu Service ID de EmailJS
-        'template_u5lpgdq', // Reemplaza con tu Template ID de EmailJS
+        'template_cnykn6m', // Reemplaza con tu Template ID de EmailJS
         {
           from_name: formData.name,
           from_email: formData.email,
