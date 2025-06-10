@@ -2,6 +2,7 @@
 import React from 'react'
 import Image from 'next/image'
 import Navbar from '../components/Navbar'
+import { useTranslation } from '../hooks/useTranslation'
 
 interface Property {
   id: number;
@@ -71,6 +72,8 @@ const properties: Property[] = [
 ]
 
 export default function Properties() {
+  const { t } = useTranslation()
+
   return (
     <main className="min-h-screen bg-light-gray">
       <Navbar />
@@ -88,10 +91,10 @@ export default function Properties() {
         </div>
         <div className="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
           <h1 className="font-serif text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
-            Propiedades Exclusivas
+            {t('properties.hero.title')}
           </h1>
           <p className="mt-6 text-xl text-gray-200 max-w-3xl">
-            Descubre nuestra selección de propiedades de alto valor en las mejores ubicaciones.
+            {t('properties.hero.subtitle')}
           </p>
         </div>
       </div>
@@ -127,7 +130,7 @@ export default function Properties() {
                   ))}
                 </div>
                 <button className="w-full bg-accent text-white py-3 px-6 rounded-lg font-medium hover:bg-accent/90 transition-colors duration-300">
-                  Solicitar Información
+                  {t('properties.card.requestInfo')}
                 </button>
               </div>
             </div>
@@ -139,14 +142,14 @@ export default function Properties() {
       <div className="bg-primary">
         <div className="max-w-2xl mx-auto text-center py-16 px-4 sm:py-20 sm:px-6 lg:px-8">
           <h2 className="font-serif text-3xl font-extrabold text-white sm:text-4xl">
-            <span className="block">¿No encuentras lo que buscas?</span>
-            <span className="block">Tenemos más propiedades disponibles.</span>
+            <span className="block">{t('properties.cta.title')}</span>
+            <span className="block">{t('properties.cta.subtitle')}</span>
           </h2>
           <p className="mt-4 text-lg leading-6 text-gray-300">
-            Contacta con nosotros para acceder a nuestro catálogo completo de propiedades exclusivas.
+            {t('properties.cta.description')}
           </p>
           <button className="mt-8 w-full inline-flex items-center justify-center px-5 py-3 border-2 border-accent text-base font-medium rounded-lg text-white bg-accent hover:bg-accent/90 transition-colors duration-300 sm:w-auto">
-            Contactar ahora
+            {t('properties.cta.button')}
           </button>
         </div>
       </div>
