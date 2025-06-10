@@ -1,10 +1,54 @@
 'use client'
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from '@/components/Navbar'
 import { useTranslation } from '@/hooks/useTranslation'
+import emailjs from '@emailjs/browser'
 
 export default function Contact() {
   const { t } = useTranslation()
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    message: ''
+  })
+  const [status, setStatus] = useState({
+    loading: false,
+    success: false,
+    error: false
+  })
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    })
+  }
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setStatus({ loading: true, success: false, error: false })
+
+    try {
+      await emailjs.send(
+        'service_lemywb7', // Reemplaza con tu Service ID de EmailJS
+        'template_u5lpgdq', // Reemplaza con tu Template ID de EmailJS
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          phone: formData.phone,
+          message: formData.message,
+          to_name: 'Roig Investments'
+        },
+        'Ph3vDfn-CMzvL7nFlEY' // Reemplaza con tu Public Key de EmailJS
+      )
+
+      setStatus({ loading: false, success: true, error: false })
+      setFormData({ name: '', email: '', phone: '', message: '' })
+    } catch (error) {
+      setStatus({ loading: false, success: false, error: true })
+    }
+  }
 
   return (
     <main className="min-h-screen bg-light-gray">
@@ -16,7 +60,19 @@ export default function Contact() {
             {t('contact.title')}
           </h1>
           
-          <form className="space-y-6">
+          {status.success && (
+            <div className="mb-6 p-4 bg-green-100 text-green-700 rounded-lg">
+              {t('contact.form.success')}
+            </div>
+          )}
+
+          {status.error && (
+            <div className="mb-6 p-4 bg-red-100 text-red-700 rounded-lg">
+              {t('contact.form.error')}
+            </div>
+          )}
+          
+          <form onSubmit={handleSubmit} className="space-y-6">
             <div>
               <label htmlFor="name" className="block text-sm font-medium text-muted mb-2">
                 {t('contact.form.name.label')}
@@ -25,6 +81,8 @@ export default function Contact() {
                 type="text"
                 id="name"
                 name="name"
+                value={formData.name}
+                onChange={handleChange}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent"
                 placeholder={t('contact.form.name.placeholder')}
                 required
@@ -39,6 +97,8 @@ export default function Contact() {
                 type="email"
                 id="email"
                 name="email"
+                value={formData.email}
+                onChange={handleChange}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent"
                 placeholder={t('contact.form.email.placeholder')}
                 required
@@ -53,6 +113,8 @@ export default function Contact() {
                 type="tel"
                 id="phone"
                 name="phone"
+                value={formData.phone}
+                onChange={handleChange}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent"
                 placeholder={t('contact.form.phone.placeholder')}
               />
@@ -65,6 +127,8 @@ export default function Contact() {
               <textarea
                 id="message"
                 name="message"
+                value={formData.message}
+                onChange={handleChange}
                 rows={4}
                 className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-accent"
                 placeholder={t('contact.form.message.placeholder')}
@@ -74,9 +138,10 @@ export default function Contact() {
 
             <button
               type="submit"
-              className="w-full px-6 py-3 bg-accent text-white rounded-lg hover:bg-accent/90 transition-colors duration-300"
+              disabled={status.loading}
+              className="w-full px-6 py-3 bg-accent text-white rounded-lg hover:bg-accent/90 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {t('contact.form.submit')}
+              {status.loading ? t('contact.form.sending') : t('contact.form.submit')}
             </button>
           </form>
 

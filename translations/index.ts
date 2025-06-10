@@ -107,7 +107,10 @@ export const translations = {
           label: 'Mensaje',
           placeholder: '¿En qué podemos ayudarte?'
         },
-        submit: 'Enviar Mensaje'
+        submit: 'Enviar Mensaje',
+        sending: 'Enviando...',
+        success: '¡Gracias por contactarnos! Te responderemos lo antes posible.',
+        error: 'Ha ocurrido un error al enviar el mensaje. Por favor, inténtalo de nuevo.'
       },
       info: {
         title: 'Información de Contacto',
@@ -234,7 +237,10 @@ export const translations = {
           label: 'Message',
           placeholder: 'How can we help you?'
         },
-        submit: 'Send Message'
+        submit: 'Send Message',
+        sending: 'Sending...',
+        success: 'Thank you for contacting us! We will get back to you as soon as possible.',
+        error: 'An error occurred while sending the message. Please try again.'
       },
       info: {
         title: 'Contact Information',
@@ -361,7 +367,10 @@ export const translations = {
           label: 'Missatge',
           placeholder: 'En què podem ajudar-te?'
         },
-        submit: 'Enviar Missatge'
+        submit: 'Enviar Missatge',
+        sending: 'Enviant...',
+        success: 'Gràcies per contactar-nos! Et respondrem el més aviat possible.',
+        error: 'S\'ha produït un error en enviar el missatge. Si us plau, torna-ho a provar.'
       },
       info: {
         title: 'Informació de Contacte',
