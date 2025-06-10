@@ -72,24 +72,25 @@ const properties: Property[] = [
 
 export default function Properties() {
   return (
-    <main className="min-h-screen bg-gray-50">
+    <main className="min-h-screen bg-light-gray">
       <Navbar />
       
       {/* Hero Section */}
-      <div className="relative bg-blue-900">
+      <div className="relative bg-primary">
         <div className="absolute inset-0">
           <Image
             src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1073&q=80"
             alt="Propiedades de lujo"
             fill
             className="object-cover opacity-50"
+            priority
           />
         </div>
         <div className="relative max-w-7xl mx-auto py-24 px-4 sm:py-32 sm:px-6 lg:px-8">
-          <h1 className="text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
+          <h1 className="font-serif text-4xl font-extrabold tracking-tight text-white sm:text-5xl lg:text-6xl">
             Propiedades Exclusivas
           </h1>
-          <p className="mt-6 text-xl text-blue-100 max-w-3xl">
+          <p className="mt-6 text-xl text-gray-200 max-w-3xl">
             Descubre nuestra selección de propiedades de alto valor en las mejores ubicaciones.
           </p>
         </div>
@@ -99,7 +100,7 @@ export default function Properties() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {properties.map((property) => (
-            <div key={property.id} className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl">
+            <div key={property.id} className="bg-white rounded-xl shadow-soft overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-hover">
               <div className="relative h-64 w-full">
                 <Image
                   src={property.image}
@@ -111,21 +112,21 @@ export default function Properties() {
                 />
               </div>
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">{property.title}</h3>
-                <p className="text-gray-600 mb-4">{property.location}</p>
-                <p className="text-2xl font-bold text-blue-600 mb-4">{property.price}</p>
-                <p className="text-gray-700 mb-4">{property.description}</p>
+                <h3 className="font-serif text-xl font-semibold text-primary mb-2">{property.title}</h3>
+                <p className="text-muted mb-4">{property.location}</p>
+                <p className="text-2xl font-bold text-accent mb-4">{property.price}</p>
+                <p className="text-muted mb-4">{property.description}</p>
                 <div className="flex flex-wrap gap-2 mb-6">
                   {property.features.map((feature, index) => (
                     <span
                       key={index}
-                      className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm font-medium"
+                      className="px-3 py-1 bg-light-gray text-primary rounded-full text-sm font-medium"
                     >
                       {feature}
                     </span>
                   ))}
                 </div>
-                <button className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-blue-700 transition-colors duration-300">
+                <button className="w-full bg-accent text-white py-3 px-6 rounded-lg font-medium hover:bg-accent/90 transition-colors duration-300">
                   Solicitar Información
                 </button>
               </div>
@@ -135,16 +136,16 @@ export default function Properties() {
       </div>
 
       {/* CTA Section */}
-      <div className="bg-blue-700">
+      <div className="bg-primary">
         <div className="max-w-2xl mx-auto text-center py-16 px-4 sm:py-20 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-extrabold text-white sm:text-4xl">
+          <h2 className="font-serif text-3xl font-extrabold text-white sm:text-4xl">
             <span className="block">¿No encuentras lo que buscas?</span>
             <span className="block">Tenemos más propiedades disponibles.</span>
           </h2>
-          <p className="mt-4 text-lg leading-6 text-blue-200">
+          <p className="mt-4 text-lg leading-6 text-gray-300">
             Contacta con nosotros para acceder a nuestro catálogo completo de propiedades exclusivas.
           </p>
-          <button className="mt-8 w-full inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-blue-600 bg-white hover:bg-blue-50 sm:w-auto">
+          <button className="mt-8 w-full inline-flex items-center justify-center px-5 py-3 border-2 border-accent text-base font-medium rounded-lg text-white bg-accent hover:bg-accent/90 transition-colors duration-300 sm:w-auto">
             Contactar ahora
           </button>
         </div>
