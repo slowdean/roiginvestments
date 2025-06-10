@@ -8,6 +8,12 @@ export default function Navbar() {
   const { t, locale } = useTranslation()
   const [isOpen, setIsOpen] = useState(false)
 
+  const languages = [
+    { code: 'es', name: 'Español' },
+    { code: 'en', name: 'English' },
+    { code: 'ca', name: 'Català' }
+  ]
+
   return (
     <nav className="bg-white shadow-soft">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

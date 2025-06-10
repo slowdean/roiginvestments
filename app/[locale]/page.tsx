@@ -2,11 +2,11 @@
 import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import Navbar from '../../components/Navbar'
-import { useTranslation } from '../../hooks/useTranslation'
+import Navbar from '@/components/Navbar'
+import { useTranslation } from '@/hooks/useTranslation'
 
 export default function Home() {
-  const { t } = useTranslation()
+  const { t, locale } = useTranslation()
 
   return (
     <main className="min-h-screen bg-light-gray">
@@ -34,13 +34,13 @@ export default function Home() {
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
-                href="/propiedades"
+                href={`/${locale}/propiedades`}
                 className="inline-flex items-center justify-center px-8 py-3 border-2 border-accent text-base font-medium rounded-lg text-white bg-accent hover:bg-accent/90 transition-colors duration-300"
               >
                 {t('home.hero.cta1')}
               </Link>
               <Link
-                href="/contacto"
+                href={`/${locale}/contacto`}
                 className="inline-flex items-center justify-center px-8 py-3 border-2 border-white text-base font-medium rounded-lg text-white hover:bg-white hover:text-primary transition-colors duration-300"
               >
                 {t('home.hero.cta2')}
@@ -105,7 +105,7 @@ export default function Home() {
             {t('home.cta.subtitle')}
           </p>
           <Link
-            href="/contacto"
+            href={`/${locale}/contacto`}
             className="inline-flex items-center justify-center px-8 py-3 border-2 border-accent text-base font-medium rounded-lg text-white bg-accent hover:bg-accent/90 transition-colors duration-300"
           >
             {t('home.cta.button')}

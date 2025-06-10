@@ -1,4 +1,5 @@
 'use client'
+
 import { usePathname } from 'next/navigation'
 import { translations } from '../translations'
 
@@ -11,11 +12,8 @@ export function useTranslation() {
     let value: any = translations[locale as keyof typeof translations]
 
     for (const k of keys) {
-      if (value && typeof value === 'object') {
-        value = value[k]
-      } else {
-        return key
-      }
+      if (value === undefined) return key
+      value = value[k]
     }
 
     return value || key
