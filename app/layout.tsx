@@ -1,6 +1,7 @@
 import './globals.css'
 import type { Metadata } from 'next'
 import { Lato, Playfair_Display } from 'next/font/google'
+import VercelAnalytics from './components/VercelAnalytics'
 
 const lato = Lato({
   subsets: ['latin'],
@@ -27,6 +28,7 @@ export default function RootLayout({
     <html lang="es" className={`${lato.variable} ${playfair.variable}`}>
       <body className="min-h-screen bg-light-gray font-sans">
         {children}
+        <VercelAnalytics />
       </body>
     </html>
   )
