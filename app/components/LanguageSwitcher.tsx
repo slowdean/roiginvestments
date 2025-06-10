@@ -1,5 +1,5 @@
 'use client'
-import { useParams, useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import { useCallback } from 'react'
 
 const languages = {
@@ -10,14 +10,15 @@ const languages = {
 
 export default function LanguageSwitcher() {
   const router = useRouter()
-  const params = useParams()
-  const currentLocale = (params?.locale as string) || 'es'
+  const pathname = usePathname()
+  const currentLocale = pathname.split('/')[1] || 'es'
 
   const handleLanguageChange = useCallback((newLocale: string) => {
-    const currentPath = window.location.pathname
-    const newPath = currentPath.replace(`/${currentLocale}`, `/${newLocale}`)
+    const segments = pathname.split('/')
+    segments[1] = newLocale
+    const newPath = segments.join('/')
     router.push(newPath)
-  }, [currentLocale, router])
+  }, [pathname, router])
 
   return (
     <div className="relative inline-block text-left">

@@ -1,10 +1,10 @@
 'use client'
-import { useParams } from 'next/navigation'
+import { usePathname } from 'next/navigation'
 import { translations } from '../translations'
 
 export function useTranslation() {
-  const params = useParams()
-  const locale = (params?.locale as string) || 'es'
+  const pathname = usePathname()
+  const locale = pathname.split('/')[1] || 'es'
 
   const t = (key: string) => {
     const keys = key.split('.')
