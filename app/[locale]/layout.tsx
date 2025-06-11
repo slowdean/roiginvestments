@@ -29,21 +29,13 @@ export default function RootLayout({
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
-            gtag('config', 'G-WR7S4N71T4');
+            gtag('config', 'G-WR7S4N71T4', {
+              page_path: window.location.pathname,
+            });
           `}
         </Script>
       </head>
-      <body className={inter.className}>
-        <noscript>
-          <iframe 
-            src="https://www.googletagmanager.com/ns.html?id=GTM-5W4SH8K9"
-            height="0" 
-            width="0" 
-            style={{ display: 'none', visibility: 'hidden' }}
-          />
-        </noscript>
-        {children}
-      </body>
+      <body className={inter.className}>{children}</body>
     </html>
   )
 } 
