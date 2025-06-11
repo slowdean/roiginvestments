@@ -5,6 +5,14 @@ import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import { useTranslation } from '@/hooks/useTranslation'
 
+export async function generateStaticParams() {
+  return [
+    { locale: 'es' },
+    { locale: 'en' },
+    { locale: 'ca' }
+  ]
+}
+
 export default function Properties() {
   const { t, locale } = useTranslation()
 

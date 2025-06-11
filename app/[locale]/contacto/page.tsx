@@ -5,6 +5,14 @@ import { useTranslation } from '@/hooks/useTranslation'
 import emailjs from '@emailjs/browser'
 import { initEmailJS } from '@/app/config/emailjs'
 
+export async function generateStaticParams() {
+  return [
+    { locale: 'es' },
+    { locale: 'en' },
+    { locale: 'ca' }
+  ]
+}
+
 export default function Contact() {
   const { t } = useTranslation()
   const [formData, setFormData] = useState({
